@@ -2,13 +2,13 @@ import json
 import os
 from tqdm import tqdm
 from collections import Counter
-from Recomender_Helper.vector_helper import get_vector_by_isbn, cosine_similarity, average_vectors, concat
+from vector_helper import get_vector_by_isbn, cosine_similarity, average_vectors, concat
 
 # ---- Paths ----
 
-TEST_DATA_FILE = "user_eval_sets/users_with_one_STEM_book_and_six_plus_high_rated_books_formatted.json"
+TEST_DATA_FILE = r"data\users_with_1_2_3_STEM_books_and_six_plus_high_rated_books_formatted.json"
 #TEST_DATA_FILE = "user_eval_sets/test.json"
-STEM_BOOKS_FILE = "processed_data/stem_books.jsonl"
+STEM_BOOKS_FILE = "data/stem_books.jsonl"
 
 
 def handle_book(isbn, emotion_type, topic_type):
@@ -51,7 +51,7 @@ def make_candidate_profile(profile_books, emotion_type, general_stem_topic_vec):
 
 
 
-def recomend(test_data_file, emotion_type = "emotion_intensity", topic_type = "tf_idf"):
+def recomend(test_data_file, emotion_type = "emotion", topic_type = "glove"):
     general_stem_topic_vec = general_stem_topic_vec_maker(topic_type)
     with open(test_data_file, 'r') as file:
         data = json.load(file)

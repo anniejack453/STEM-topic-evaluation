@@ -1,6 +1,7 @@
 import json
 import os
 from tqdm import tqdm
+from vector_methods.glove_vector_maker import G
 
 # Paths
 JSONL_PATH = "processed_data/books_with_subjects_complete.jsonl"
@@ -26,15 +27,6 @@ def get_descriptions():
 
 book_descriptions = get_descriptions()
 
-emo_intensity_vec_maker = EmotionVectorMaker()
-
-emo_vec_maker = EmotionVectorMaker(use_intensity=False)
-
-empath_vec_maker = EmpathVectorMaker()
-
-all_descriptions = [text for _, text in book_descriptions]
-
-tf_idf_vec_maker = TF_IDFVectorMaker(all_descriptions)
 
 print("Vector Makers all made")
 
@@ -46,10 +38,7 @@ output_path = os.path.join(
 with open(output_path, "w", encoding="utf-8") as outfile:
     i = 0
     for isbn, description in tqdm(book_descriptions):
-        emo_intensity_vec = emo_intensity_vec_maker.getEmotionVector(description, removeObj=True)
-        emo_vec = emo_vec_maker.getEmotionVector(description, removeObj=True)
-        empath_vec = empath_vec_maker.getEmapthVector(description)
-        tf_idf_vec = tf_idf_vec_maker.getTF_IDFvector(description)
+        glove_vector = glove.text_to_vector(description)
         book = {
             "isbn" : isbn,
             "emotion_intensity" : emo_intensity_vec,

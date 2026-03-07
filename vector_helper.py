@@ -5,10 +5,10 @@ import numpy as np
 from typing import List, Union
 import tqdm
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 BOOK_VECTORS = os.path.join(
-    BASE_DIR, "processed_data", "book_vectors.jsonl"
+    BASE_DIR, "data", "book_vectors_combined.jsonl"
 )
 
 def _load_book_data(file_path):
@@ -31,7 +31,7 @@ BOOK_DATA_CACHE = _load_book_data(BOOK_VECTORS)
 
 def get_vector_by_isbn(isbn: str, vector_type: str):
 
-    valid_types = {"emotion_intensity", "emotion", "empath", "tf_idf"}
+    valid_types = {"emotion_intensity", "emotion", "empath", "tf_idf", "glove"}
 
     if vector_type not in valid_types:
         raise ValueError(f"vector_type must be one of {valid_types}")

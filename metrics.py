@@ -61,7 +61,7 @@ def handle_user(record):
 
 
 
-file_name = "recommendation_using_emotion_intensity_tf_idf.json"
+file_name = "recommendation_using_emotion_glove.json"
 file_path = f"recommendations/{file_name}"
 
 with open(file_path, "r", encoding="utf-8") as f:

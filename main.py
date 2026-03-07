@@ -1,9 +1,9 @@
 from book_list_getter import BookListGetter, bookList, WordListGetter
-from empath import EmpathReviewer
-from tf_idf import TF_IDF_Reviewer
-from doc2vec import Doc2VecReviewer
-from word2vec import Word2VecReviewer
-from glove import GloVeReviewer
+from vector_methods.empath import EmpathReviewer
+from vector_methods.tf_idf import TF_IDF_Reviewer
+from vector_methods.doc2vec import Doc2VecReviewer
+from vector_methods.word2vec import Word2VecReviewer
+from vector_methods.glove import GloVeReviewer
 import csv
 
 book_list_getter = BookListGetter()
