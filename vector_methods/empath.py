@@ -1,4 +1,4 @@
-from empath import Empath
+from vector_methods.empath import Empath
 import itertools
 
 
